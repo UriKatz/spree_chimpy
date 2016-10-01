@@ -38,7 +38,7 @@ module Spree::Chimpy
     end
 
     def unsubscribing?
-      !@model.new_record? && !@model.subscribed && @model.subscribed_changed?
+      !@model.new_record? && !@model.subscribed
     end
 
     def merge_vars_changed?
