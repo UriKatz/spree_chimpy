@@ -33,7 +33,8 @@ module Spree::Chimpy
         log "Unsubscribing #{email} from #{@list_name}"
 
         begin
-          api_call.unsubscribe(list_id, { email: email })
+          delete_member = true # makes sure the user can resubscribe from the store instead of getting an error from Mailchimp
+          api_call.unsubscribe(list_id, { email: email }, delete_member)
         rescue Mailchimp::EmailNotExistsError, Mailchimp::ListNotSubscribedError
           true
         end
